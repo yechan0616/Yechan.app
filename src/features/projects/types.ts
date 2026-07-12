@@ -1,0 +1,13 @@
+import type { Localized } from 'shared/i18n/strings'
+
+export interface Project {
+  id: string
+  title: Localized
+  year: string
+  techStack: string[]
+  repositoryUrl?: string
+  image?: string
+  meta: Localized
+  summary: Localized
+  paragraphs: Localized<string[]>
+}

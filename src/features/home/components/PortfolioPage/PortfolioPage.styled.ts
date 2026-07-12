@@ -1,0 +1,35 @@
+import styled from '@emotion/styled'
+
+export const Page = styled.div`
+  min-height: 100vh;
+  background: ${({ theme }) => theme.colors.background};
+`
+
+export const Banner = styled.div`
+  height: 220px;
+  overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    height: 140px;
+  }
+`
+
+export const BannerImage = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+`
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
+  margin: 0 auto;
+  padding: 0 32px 96px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`

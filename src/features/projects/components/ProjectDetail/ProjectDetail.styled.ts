@@ -42,7 +42,6 @@ export const BackButton = styled.button`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 12px 16px 12px 0;
-    font-size: 15px;
   }
 `
 
@@ -66,7 +65,7 @@ export const Title = styled.h1`
   letter-spacing: -0.03em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `
 
@@ -85,7 +84,6 @@ export const Meta = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 14px;
-    font-size: 14px;
   }
 `
 
@@ -137,12 +135,6 @@ export const Paragraphs = styled.div`
     color: ${({ theme }) => theme.colors.body};
     font-size: 14px;
     line-height: 1.75;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    p {
-      font-size: 15px;
-    }
   }
 `
 
@@ -198,18 +190,10 @@ export const NavButton = styled.button<{ align?: 'end' }>`
 export const NavLabel = styled.span`
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 13px;
-  }
 `
 
 export const NavTitle = styled.span`
   color: ${({ theme }) => theme.colors.text};
   font-size: 14px;
   font-weight: 600;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 15px;
-  }
 `

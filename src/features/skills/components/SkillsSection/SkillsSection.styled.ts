@@ -24,10 +24,6 @@ export const Sentence = styled.p`
     color: ${({ theme }) => theme.colors.text};
     font-weight: 600;
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 16px;
-  }
 `
 
 export const Marquee = styled.div`
@@ -63,10 +59,6 @@ export const SkillItem = styled.span`
   font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
-  }
 `
 
 export const SkillIcon = styled.img`

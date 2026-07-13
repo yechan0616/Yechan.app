@@ -142,10 +142,6 @@ export const ItemTitle = styled.h3`
   font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 17px;
-  }
 `
 
 export const Arrow = styled.span`
@@ -153,20 +149,12 @@ export const Arrow = styled.span`
   color: ${({ theme }) => theme.colors.faint};
   font-size: 13px;
   font-weight: 400;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
-  }
 `
 
 export const Year = styled.time`
   flex: none;
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 13px;
-  }
 `
 
 export const Summary = styled.p`
@@ -179,7 +167,6 @@ export const Summary = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 6px;
     max-width: none;
-    font-size: 15px;
   }
 `
 
@@ -191,7 +178,6 @@ export const TechStack = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 6px;
-    font-size: 13px;
   }
 `
 

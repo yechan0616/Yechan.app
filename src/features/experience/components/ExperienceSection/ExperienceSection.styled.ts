@@ -54,19 +54,11 @@ export const ItemTitle = styled.h3`
   font-size: 15px;
   font-weight: 600;
   line-height: 1.3;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 16px;
-  }
 `
 
 export const Period = styled.span`
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 13px;
-  }
 `
 
 export const Desc = styled.p`
@@ -75,10 +67,6 @@ export const Desc = styled.p`
   color: ${({ theme }) => theme.colors.soft};
   font-size: 14px;
   line-height: 1.6;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 15px;
-  }
 `
 
 export const Fade = styled.div`

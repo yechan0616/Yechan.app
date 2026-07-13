@@ -40,7 +40,7 @@ export const Name = styled.h1`
   letter-spacing: -0.03em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 21px;
+    font-size: 20px;
   }
 `
 

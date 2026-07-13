@@ -26,7 +26,7 @@ export const Sentence = styled.p`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
+    font-size: 13px;
   }
 `
 

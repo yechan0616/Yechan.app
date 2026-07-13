@@ -144,7 +144,7 @@ export const ItemTitle = styled.h3`
   line-height: 1.3;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 15px;
+    font-size: 14px;
   }
 `
 

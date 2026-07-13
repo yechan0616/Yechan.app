@@ -10,7 +10,12 @@ export function useLang() {
 
   useEffect(() => {
     const saved = localStorage.getItem(KEY)
-    if (saved === 'en' || saved === 'ko') setLang(saved)
+    if (saved === 'en' || saved === 'ko') {
+      setLang(saved)
+      return
+    }
+    // 저장된 선택이 없으면 디바이스 언어를 따릅니다
+    if (navigator.language.toLowerCase().startsWith('ko')) setLang('ko')
   }, [])
 
   const toggleLang = () => {

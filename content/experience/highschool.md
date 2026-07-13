@@ -1,7 +1,7 @@
 ---
 title:
   ko: 고등학교 재학
-  en: High school
+  en: High School
 period:
   ko: 2024 — 2027
   en: 2024 — 2027

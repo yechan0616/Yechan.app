@@ -19,6 +19,20 @@ items:
           ko: 개인 포트폴리오 Yechan.app 공개
           en: Launched personal portfolio Yechan.app
         project: yechan-app
+      - label:
+          ko: 팀 프로젝트 Naju Travel 개발
+          en: Building Naju Travel, a team project
+        desc:
+          ko: 행사 캘린더와 유적지 QR 스탬프 챌린지를 담은 나주 여행 앱을 만들고 있어요.
+          en: A travel app for Naju with an event calendar and a QR stamp challenge for historic sites.
+        project: naju-travel
+      - label:
+          ko: 개인 프로젝트 Oneday 개발
+          en: Building Oneday, a personal project
+        desc:
+          ko: 더 간단하게 기록하는 가계부 앱을 직접 디자인하고 개발하고 있어요.
+          en: Designing and building a simpler personal finance app on my own.
+        project: oneday
   - year: 2025
     events:
       - label:
@@ -42,6 +56,11 @@ items:
       - label:
           ko: 전남에너지고등학교 입학
           en: Entered Jeonnam Energy High School
+  - year: 2017
+    events:
+      - label:
+          ko: 개발 시작
+          en: Started coding
         desc:
-          ko: 개발을 시작하고 Oneday, Naju Travel 같은 프로젝트를 만들며 경험을 쌓고 있어요.
-          en: Started building — gaining experience with projects like Oneday and Naju Travel.
+          ko: 초등학교 3학년, 처음 코드를 만났어요.
+          en: Wrote my first lines of code in the third grade.

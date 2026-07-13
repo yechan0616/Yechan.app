@@ -28,7 +28,6 @@ export const Container = styled.div`
   max-width: ${({ theme }) => theme.layout.maxWidth};
   margin: 0 auto;
   padding: 0 32px 96px;
-  zoom: var(--font-scale, 1);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0 20px 80px;

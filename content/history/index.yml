@@ -25,6 +25,12 @@ items:
           ko: SCSC 해커톤 팀 프로젝트 Toast Meal 개발
           en: Built Toast Meal, a SCSC hackathon team project
         project: toast-meal
+      - label:
+          ko: 제5회 전남 학생 SW융합 해커톤 참가
+          en: Entered the 5th Jeonnam Student SW Convergence Hackathon
+      - label:
+          ko: 전남 SW·AI 코딩 로봇경진대회 참가
+          en: Entered the Jeonnam SW·AI Coding Robot Competition
   - year: 2024
     events:
       - label:

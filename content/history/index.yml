@@ -34,6 +34,9 @@ items:
       - label:
           ko: 전남 SW·AI 코딩 로봇경진대회 참가
           en: Entered the Jeonnam SW·AI Coding Robot Competition
+        desc:
+          ko: 방범용 CCTV로 도로 상태를 감지하는 E-Drive를 만들어, 새 장비 없이 도로 관리 생태계를 구축하는 아이디어를 제안했어요.
+          en: Built E-Drive, turning existing security CCTV into a road-management ecosystem that detects road conditions without new hardware.
   - year: 2024
     events:
       - label:

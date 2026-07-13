@@ -3,6 +3,10 @@ import { motion } from 'framer-motion'
 
 export const Section = styled(motion.section)`
   margin-top: 64px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 48px;
+  }
 `
 
 export const Head = styled.div`
@@ -57,8 +61,8 @@ export const List = styled(motion.ul)`
   padding: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    gap: 24px;
-    margin: 16px 0 0;
+    gap: 44px;
+    margin: 20px 0 0;
   }
 `
 

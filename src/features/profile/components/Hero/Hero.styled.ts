@@ -129,7 +129,3 @@ export const EmailButton = styled.button`
     font-size: 13px;
   }
 `
-
-export const EmailIcon = styled.span`
-  font-size: 13px;
-`

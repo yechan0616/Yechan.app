@@ -1,5 +1,6 @@
 'use client'
 
+import { CheckIcon, CopySimpleIcon } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { TextLink } from 'shared/components/TextLink/TextLink.index'
 import type { Strings } from 'shared/i18n/strings'
@@ -50,7 +51,11 @@ export function Hero({ t }: { t: Strings }) {
         </TextLink>
         <S.EmailButton type='button' onClick={copyEmail} title={EMAIL}>
           {copied ? t.copied : t.email}
-          <S.EmailIcon aria-hidden='true'>⧉</S.EmailIcon>
+          {copied ? (
+            <CheckIcon size={13} aria-hidden='true' />
+          ) : (
+            <CopySimpleIcon size={13} aria-hidden='true' />
+          )}
         </S.EmailButton>
       </S.Links>
     </S.Section>

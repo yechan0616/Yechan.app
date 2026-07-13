@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowRightIcon, ArrowSquareOutIcon } from '@phosphor-icons/react'
 import { history } from 'features/history/api'
 import { projects } from 'features/projects/api'
 import { SectionTitle } from 'shared/components/SectionTitle/SectionTitle.index'
@@ -37,7 +38,13 @@ export function HistorySection({ lang, onSelect }: HistorySectionProps) {
                   <>
                     {event.label[lang]}
                     {(linked || event.href) && (
-                      <S.Arrow aria-hidden='true'>→</S.Arrow>
+                      <S.Arrow aria-hidden='true'>
+                        {event.href ? (
+                          <ArrowSquareOutIcon size='1em' />
+                        ) : (
+                          <ArrowRightIcon size='1em' />
+                        )}
+                      </S.Arrow>
                     )}
                     {event.desc && (
                       <S.EventDesc>{event.desc[lang]}</S.EventDesc>

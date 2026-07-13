@@ -150,10 +150,12 @@ export const ItemTitle = styled.h3`
 `
 
 export const Arrow = styled.span`
+  display: inline-block;
   margin-left: 6px;
   color: ${({ theme }) => theme.colors.faint};
   font-size: 13px;
-  font-weight: 400;
+  line-height: 0;
+  vertical-align: -1px;
 `
 
 export const Year = styled.time`

@@ -195,6 +195,9 @@ export const NavButton = styled.button<{ align?: 'end' }>`
 `
 
 export const NavLabel = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
 `

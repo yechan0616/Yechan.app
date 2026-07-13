@@ -1,5 +1,10 @@
 'use client'
 
+import {
+  ArrowRightIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from '@phosphor-icons/react'
 import type { Project } from 'features/projects/types'
 import { useState } from 'react'
 import { ImageSlot } from 'shared/components/ImageSlot/ImageSlot.index'
@@ -44,7 +49,7 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
               disabled={page === 0}
               aria-label='Previous projects'
             >
-              ‹
+              <CaretLeftIcon size={13} />
             </S.PagerButton>
             <S.PageLabel>
               {page + 1} / {pageCount}
@@ -55,7 +60,7 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
               disabled={page >= pageCount - 1}
               aria-label='Next projects'
             >
-              ›
+              <CaretRightIcon size={13} />
             </S.PagerButton>
           </S.Pager>
         )}
@@ -68,7 +73,9 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
                 <S.TitleRow>
                   <S.ItemTitle>
                     {project.title[lang]}
-                    <S.Arrow aria-hidden='true'>→</S.Arrow>
+                    <S.Arrow aria-hidden='true'>
+                      <ArrowRightIcon size='1em' />
+                    </S.Arrow>
                   </S.ItemTitle>
                   <S.Year>{project.year}</S.Year>
                 </S.TitleRow>

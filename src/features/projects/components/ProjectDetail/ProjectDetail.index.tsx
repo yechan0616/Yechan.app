@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react'
 import type { Project } from 'features/projects/types'
 import { ImageSlot } from 'shared/components/ImageSlot/ImageSlot.index'
 import { TextLink } from 'shared/components/TextLink/TextLink.index'
@@ -29,7 +30,7 @@ export function ProjectDetail({
     <S.Page>
       <S.Container>
         <S.BackButton type='button' onClick={onBack}>
-          <span aria-hidden='true'>←</span>
+          <ArrowLeftIcon size='1em' aria-hidden='true' />
           {t.back}
         </S.BackButton>
 
@@ -68,7 +69,10 @@ export function ProjectDetail({
           <div>
             {prev && (
               <S.NavButton type='button' onClick={() => onSelect(prev.id)}>
-                <S.NavLabel>← {t.prev}</S.NavLabel>
+                <S.NavLabel>
+                  <ArrowLeftIcon size='1em' aria-hidden='true' />
+                  {t.prev}
+                </S.NavLabel>
                 <S.NavTitle>{prev.title[lang]}</S.NavTitle>
               </S.NavButton>
             )}
@@ -80,7 +84,10 @@ export function ProjectDetail({
                 onClick={() => onSelect(next.id)}
                 align='end'
               >
-                <S.NavLabel>{t.next} →</S.NavLabel>
+                <S.NavLabel>
+                  {t.next}
+                  <ArrowRightIcon size='1em' aria-hidden='true' />
+                </S.NavLabel>
                 <S.NavTitle>{next.title[lang]}</S.NavTitle>
               </S.NavButton>
             )}

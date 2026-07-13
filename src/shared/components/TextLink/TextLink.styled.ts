@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 export const Link = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   padding: 10px 0;
   color: ${({ theme }) => theme.colors.muted};
   font-size: 14px;

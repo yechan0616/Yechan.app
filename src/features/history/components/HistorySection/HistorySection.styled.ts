@@ -84,9 +84,12 @@ export const EventButton = styled.button`
 export const EventLink = EventButton.withComponent('a')
 
 export const Arrow = styled.span`
+  display: inline-block;
   margin-left: 6px;
   color: ${({ theme }) => theme.colors.faint};
   font-size: 13px;
+  line-height: 0;
+  vertical-align: -1px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 12px;

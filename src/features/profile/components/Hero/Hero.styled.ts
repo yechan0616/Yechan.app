@@ -40,7 +40,7 @@ export const Name = styled.h1`
   letter-spacing: -0.03em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 22px;
+    font-size: 21px;
   }
 `
 
@@ -51,7 +51,7 @@ export const Role = styled.p`
   line-height: 1.2;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 14px;
+    font-size: 13px;
   }
 `
 
@@ -66,6 +66,7 @@ export const Bio = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 20px;
+    font-size: 13px;
   }
 `
 
@@ -122,6 +123,10 @@ export const EmailButton = styled.button`
     &:hover {
       color: ${({ theme }) => theme.colors.text};
     }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 13px;
   }
 `
 

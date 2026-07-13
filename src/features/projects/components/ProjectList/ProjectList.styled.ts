@@ -142,6 +142,10 @@ export const ItemTitle = styled.h3`
   font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 15px;
+  }
 `
 
 export const Arrow = styled.span`
@@ -167,6 +171,7 @@ export const Summary = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 6px;
     max-width: none;
+    font-size: 13px;
   }
 `
 

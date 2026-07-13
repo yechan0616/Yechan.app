@@ -19,4 +19,8 @@ export const Link = styled.a`
       color: ${({ theme }) => theme.colors.text};
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 13px;
+  }
 `

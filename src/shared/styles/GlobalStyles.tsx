@@ -19,8 +19,8 @@ export function GlobalStyles() {
           margin: 0;
           background: ${theme.colors.background};
           color: ${theme.colors.text};
-          font-family: var(--font-inter), -apple-system, BlinkMacSystemFont,
-            'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+          font-family: var(--font-inter), 'Pretendard Variable', -apple-system,
+            BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
           -webkit-font-smoothing: antialiased;
           user-select: none;
           -webkit-user-select: none;

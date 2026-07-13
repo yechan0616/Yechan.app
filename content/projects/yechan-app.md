@@ -1,7 +1,7 @@
 ---
 title: Yechan.app
 year: 2026
-order: 1
+order: 2
 techStack: [Next.js, React, TypeScript, Emotion, Framer Motion]
 repositoryUrl: https://github.com/yechan0616/yechan.app
 image: /assets/projects/yechan-app.jpeg

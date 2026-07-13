@@ -3,7 +3,7 @@ title:
   ko: Toast Meal
   en: Toast Meal
 year: 2025
-order: 2
+order: 4
 techStack: [Next.js, React, React Native, Emotion, Spring Boot, PostgreSQL]
 image: /assets/projects/toast-meal.png
 meta:

@@ -1,6 +1,6 @@
 ---
 title: Naju Travel
-year: 2026
+year: 2024
 order: 5
 techStack: [Next.js, React, React Native, Emotion, Spring Boot, PostgreSQL]
 image: /assets/projects/naju-travel.png

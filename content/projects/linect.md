@@ -1,7 +1,7 @@
 ---
 title: LINECT
 year: 2026
-order: 3
+order: 1
 techStack: [Next.js, React, TypeScript, Emotion, Framer Motion, Turborepo]
 image: /assets/projects/linect.png
 meta:

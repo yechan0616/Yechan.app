@@ -17,6 +17,8 @@ export const strings = {
     less: 'Show less',
     updated: 'Last updated',
     slotPlaceholder: 'Project screenshot coming soon',
+    notFound: "This page doesn't exist.",
+    goHome: 'Go home',
   },
   ko: {
     role: '프론트엔드 개발자',
@@ -32,6 +34,8 @@ export const strings = {
     less: '접기',
     updated: '마지막 업데이트',
     slotPlaceholder: '프로젝트 스크린샷 준비 중',
+    notFound: '찾는 페이지가 없어요.',
+    goHome: '홈으로 가기',
   },
 } as const
 

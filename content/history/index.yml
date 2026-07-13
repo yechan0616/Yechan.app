@@ -1,17 +1,35 @@
 items:
   - year: 2026
     events:
-      - ko: LINECT Tech 프론트엔드 개발자 합류
-        en: Joined LINECT Tech as a frontend developer
-      - ko: 2026 AI Youth Challenge 참가 · NextAI
-        en: Entered the 2026 AI Youth Challenge with NextAI
-      - ko: 개인 포트폴리오 Yechan.app 공개
-        en: Launched personal portfolio Yechan.app
+      - label:
+          ko: LINECT Tech 프론트엔드 개발자 합류
+          en: Joined LINECT Tech as a frontend developer
+        desc:
+          ko: 스테이블코인 기반 글로벌 USD 금융 플랫폼의 웹사이트와 운영 대시보드를 개발해요.
+          en: Building the website and operations dashboard for a stablecoin-powered USD finance platform.
+        project: linect
+      - label:
+          ko: 2026 AI Youth Challenge 참가
+          en: Entered the 2026 AI Youth Challenge
+        desc:
+          ko: 팀 Next로 AI 기반 설비 예지보전 플랫폼 NextAI를 만들고 있어요.
+          en: Building NextAI, an AI-powered predictive maintenance platform, with team Next.
+        project: nextai
+      - label:
+          ko: 개인 포트폴리오 Yechan.app 공개
+          en: Launched personal portfolio Yechan.app
+        project: yechan-app
   - year: 2025
     events:
-      - ko: 해커톤 팀 프로젝트 Toast Meal 개발
-        en: Built Toast Meal, a hackathon team project
+      - label:
+          ko: 해커톤 팀 프로젝트 Toast Meal 개발
+          en: Built Toast Meal, a hackathon team project
+        project: toast-meal
   - year: 2024
     events:
-      - ko: 전남에너지고등학교 입학
-        en: Entered Jeonnam Energy High School
+      - label:
+          ko: 전남에너지고등학교 입학
+          en: Entered Jeonnam Energy High School
+        desc:
+          ko: 개발을 시작하고 Oneday, Naju Travel 같은 프로젝트를 만들며 경험을 쌓고 있어요.
+          en: Started building — gaining experience with projects like Oneday and Naju Travel.

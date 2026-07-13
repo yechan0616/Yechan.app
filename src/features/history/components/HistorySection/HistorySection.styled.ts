@@ -40,17 +40,67 @@ export const Year = styled.span`
 export const Events = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
   min-width: 0;
 `
 
-export const Event = styled.p`
-  margin: 0;
+export const Event = styled.div`
   color: ${({ theme }) => theme.colors.soft};
   font-size: 14px;
   line-height: 1.7;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 13px;
+  }
+`
+
+export const EventButton = styled.button`
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: ${({ theme }) => theme.colors.soft};
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.55;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 13px;
+  }
+`
+
+export const EventLink = EventButton.withComponent('a')
+
+export const Arrow = styled.span`
+  margin-left: 6px;
+  color: ${({ theme }) => theme.colors.faint};
+  font-size: 13px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 12px;
+  }
+`
+
+export const EventDesc = styled.p`
+  margin: 2px 0 0;
+  max-width: 520px;
+  color: ${({ theme }) => theme.colors.faint};
+  font-size: 13px;
+  line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 12px;
   }
 `

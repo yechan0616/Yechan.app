@@ -32,24 +32,6 @@ export default defineConfig({
           id: path.replace(/^projects\//, ''),
         })),
     },
-    experience: {
-      name: 'Experience',
-      pattern: 'experience/*.md',
-      schema: s.object({
-        title: localized,
-        period: localized,
-        order: s.number().default(0),
-        raw: s.raw(),
-      }),
-    },
-    skills: {
-      name: 'Skills',
-      pattern: 'skills/index.yml',
-      single: true,
-      schema: s.object({
-        other: s.array(s.string()),
-      }),
-    },
     history: {
       name: 'History',
       pattern: 'history/index.yml',
@@ -58,9 +40,26 @@ export default defineConfig({
         items: s.array(
           s.object({
             year: s.number(),
-            events: s.array(localized),
+            events: s.array(
+              s.object({
+                label: localized,
+                desc: localized.optional(),
+                // 관련 프로젝트 id — 클릭 시 해당 상세 페이지로 이동합니다
+                project: s.string().optional(),
+                // 프로젝트가 아닌 자료(상장 등)로 연결할 외부/내부 링크
+                href: s.string().optional(),
+              }),
+            ),
           }),
         ),
+      }),
+    },
+    skills: {
+      name: 'Skills',
+      pattern: 'skills/index.yml',
+      single: true,
+      schema: s.object({
+        other: s.array(s.string()),
       }),
     },
   },

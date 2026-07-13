@@ -80,6 +80,7 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
                   image={project.image}
                   alt={project.title[lang]}
                   radius={0}
+                  loading='lazy'
                 />
               </S.Thumb>
             </S.ItemButton>

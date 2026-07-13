@@ -3,7 +3,7 @@ title: Naju Travel
 year: 2024
 order: 6
 techStack: [Next.js, React, React Native, Emotion, Spring Boot, PostgreSQL]
-image: /assets/projects/naju-travel.png
+image: /assets/projects/naju-travel.jpg
 meta:
   ko: 팀 프로젝트 · 프론트엔드 개발
   en: Team project · Frontend development

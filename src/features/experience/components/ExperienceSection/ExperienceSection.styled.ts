@@ -3,6 +3,10 @@ import { motion } from 'framer-motion'
 
 export const Section = styled(motion.section)`
   margin-top: 64px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 56px;
+  }
 `
 
 export const TimelineWrapper = styled.div`
@@ -50,11 +54,19 @@ export const ItemTitle = styled.h3`
   font-size: 15px;
   font-weight: 600;
   line-height: 1.3;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 16px;
+  }
 `
 
 export const Period = styled.span`
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 13px;
+  }
 `
 
 export const Desc = styled.p`
@@ -63,6 +75,10 @@ export const Desc = styled.p`
   color: ${({ theme }) => theme.colors.soft};
   font-size: 14px;
   line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 15px;
+  }
 `
 
 export const Fade = styled.div`
@@ -79,6 +95,11 @@ export const Fade = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  pointer-events: none;
+
+  button {
+    pointer-events: auto;
+  }
 `
 
 export const Center = styled.div`
@@ -98,10 +119,16 @@ export const ToggleButton = styled.button`
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `
 

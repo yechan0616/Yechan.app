@@ -6,6 +6,7 @@ export const Page = styled.div`
 `
 
 export const Banner = styled.div`
+  position: relative;
   height: 220px;
   overflow: hidden;
 
@@ -27,9 +28,9 @@ export const Container = styled.div`
   max-width: ${({ theme }) => theme.layout.maxWidth};
   margin: 0 auto;
   padding: 0 32px 96px;
+  zoom: var(--font-scale, 1);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px 80px;
   }
 `

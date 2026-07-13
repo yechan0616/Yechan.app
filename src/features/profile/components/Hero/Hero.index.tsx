@@ -50,6 +50,7 @@ export function Hero({ t }: { t: Strings }) {
         </TextLink>
         <S.EmailButton type='button' onClick={copyEmail} title={EMAIL}>
           {copied ? t.copied : t.email}
+          <S.EmailIcon aria-hidden='true'>⧉</S.EmailIcon>
         </S.EmailButton>
       </S.Links>
     </S.Section>

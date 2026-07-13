@@ -36,9 +36,15 @@ export const HomeLink = styled.a`
   color: ${({ theme }) => theme.colors.muted};
   font-size: 14px;
   font-weight: 500;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `

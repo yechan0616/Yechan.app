@@ -34,20 +34,30 @@ interface FooterProps {
 
 export function Footer({ lang, t }: FooterProps) {
   const [updated, setUpdated] = useState({ label: '', exact: '' })
+  const [tipOpen, setTipOpen] = useState(false)
 
   useEffect(() => {
     setUpdated({ label: relativeLabel(lang), exact: exactLabel() })
   }, [lang])
 
+  // 터치 환경에는 호버가 없으니 탭으로 툴팁을 토글합니다
+  const toggleTip = () => {
+    if (window.matchMedia('(hover: none)').matches) setTipOpen((open) => !open)
+  }
+
   return (
     <S.Footer>
+      <S.EmailLink href={`mailto:${EMAIL}`}>{EMAIL}</S.EmailLink>
       <S.Copy>
         © {buildDate.getFullYear()} Yechan Moon ·{' '}
-        <S.Updated data-tooltip={updated.exact}>
+        <S.Updated
+          data-tooltip={updated.exact}
+          data-open={tipOpen || undefined}
+          onClick={toggleTip}
+        >
           {t.updated} {updated.label}
         </S.Updated>
       </S.Copy>
-      <S.EmailLink href={`mailto:${EMAIL}`}>{EMAIL}</S.EmailLink>
     </S.Footer>
   )
 }

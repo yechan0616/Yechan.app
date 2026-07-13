@@ -3,6 +3,10 @@ import { motion } from 'framer-motion'
 
 export const Section = styled(motion.section)`
   margin-top: 64px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 48px;
+  }
 `
 
 export const Head = styled.div`
@@ -29,10 +33,16 @@ export const PagerButton = styled.button`
   color: ${({ theme }) => theme.colors.muted};
   font-size: 14px;
   cursor: pointer;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active:not(:disabled) {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `
 
@@ -44,33 +54,75 @@ export const PageLabel = styled.span`
 
 export const List = styled(motion.ul)`
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  margin: 12px 0 -14px;
+  padding: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    gap: 32px;
+    margin: 20px 0 0;
+  }
 `
 
-export const Item = styled(motion.li)`
+export const Item = styled(motion.li)``
+
+export const ItemButton = styled.button`
   display: flex;
   align-items: center;
   gap: 20px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-`
-
-export const ItemButton = styled.button`
-  display: block;
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  padding: 16px 0;
+  width: calc(100% + 32px);
+  margin: 0 -16px;
+  padding: 14px 16px;
   border: 0;
+  border-radius: 12px;
   background: none;
   text-align: left;
   cursor: pointer;
-  transition: opacity 0.15s ease;
+  transition: background 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    opacity: 0.55;
+  &:active {
+    opacity: 0.6;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: ${({ theme }) => theme.colors.surface};
+    }
+
+    &:hover img {
+      transform: scale(1.03);
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column-reverse;
+    gap: 14px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+
+    @media (hover: hover) {
+      &:hover {
+        background: none;
+        opacity: 0.75;
+      }
+
+      &:hover img {
+        transform: none;
+      }
+    }
+  }
+`
+
+export const Content = styled.article`
+  flex: 1;
+  min-width: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
   }
 `
 
@@ -78,14 +130,22 @@ export const TitleRow = styled.div`
   display: flex;
   align-items: baseline;
   gap: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    justify-content: space-between;
+  }
 `
 
 export const ItemTitle = styled.h3`
   margin: 0;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 17px;
+  }
 `
 
 export const Arrow = styled.span`
@@ -93,11 +153,20 @@ export const Arrow = styled.span`
   color: ${({ theme }) => theme.colors.faint};
   font-size: 13px;
   font-weight: 400;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 14px;
+  }
 `
 
 export const Year = styled.time`
+  flex: none;
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 13px;
+  }
 `
 
 export const Summary = styled.p`
@@ -106,6 +175,12 @@ export const Summary = styled.p`
   color: ${({ theme }) => theme.colors.soft};
   font-size: 14px;
   line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 6px;
+    max-width: none;
+    font-size: 15px;
+  }
 `
 
 export const TechStack = styled.p`
@@ -113,15 +188,31 @@ export const TechStack = styled.p`
   color: ${({ theme }) => theme.colors.faint};
   font-size: 12px;
   line-height: 1.5;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 6px;
+    font-size: 13px;
+  }
 `
 
 export const Thumb = styled.div`
   flex: none;
-  width: 104px;
-  height: 72px;
+  width: 128px;
+  height: 80px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    border: 0;
+    transition: transform 0.25s ease;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 80px;
-    height: 56px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 350 / 197;
+    border-radius: 12px;
+    background: ${({ theme }) => theme.colors.surface};
   }
 `

@@ -1,12 +1,89 @@
 'use client'
 
 import { otherSkills } from 'features/skills/api'
+import { useEffect, useRef } from 'react'
 import { SectionTitle } from 'shared/components/SectionTitle/SectionTitle.index'
 import type { Lang } from 'shared/i18n/strings'
 import { fadeUp, viewportOnce } from 'shared/styles/motion'
+import { asset } from 'shared/utils/asset'
 import * as S from './SkillsSection.styled'
 
+const SPEED = 32 // px per second
+const EASE = 4 // higher = quicker deceleration/acceleration
+
+function SkillGroup({ hidden }: { hidden?: boolean }) {
+  return (
+    <S.Group aria-hidden={hidden}>
+      {otherSkills.map((skill) => (
+        <S.SkillItem key={skill.name}>
+          {skill.icon && (
+            <S.SkillIcon src={asset(skill.icon)} alt='' loading='lazy' />
+          )}
+          {skill.name}
+        </S.SkillItem>
+      ))}
+    </S.Group>
+  )
+}
+
+function useMarquee() {
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let offset = 0
+    let speed = 1
+    let target = 1
+    let last = performance.now()
+
+    const step = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05)
+      last = now
+      speed += (target - speed) * Math.min(1, dt * EASE)
+      offset += SPEED * speed * dt
+      const half = track.scrollWidth / 2
+      if (half > 0 && offset >= half) offset -= half
+      track.style.transform = `translateX(${-offset}px)`
+      raf = requestAnimationFrame(step)
+    }
+    let raf = requestAnimationFrame(step)
+
+    const slow = () => {
+      target = 0
+    }
+    const resume = () => {
+      target = 1
+    }
+    const toggle = () => {
+      target = target === 0 ? 1 : 0
+    }
+
+    // 마우스 환경은 호버로 감속, 터치 환경은 탭으로 정지/재생을 토글합니다
+    const hoverCapable = window.matchMedia('(hover: hover)').matches
+    if (hoverCapable) {
+      track.addEventListener('mouseenter', slow)
+      track.addEventListener('mouseleave', resume)
+    } else {
+      track.addEventListener('click', toggle)
+    }
+
+    return () => {
+      cancelAnimationFrame(raf)
+      track.removeEventListener('mouseenter', slow)
+      track.removeEventListener('mouseleave', resume)
+      track.removeEventListener('click', toggle)
+    }
+  }, [])
+
+  return trackRef
+}
+
 export function SkillsSection({ lang }: { lang: Lang }) {
+  const trackRef = useMarquee()
+
   return (
     <S.Section
       id='skills'
@@ -29,8 +106,13 @@ export function SkillsSection({ lang }: { lang: Lang }) {
             <strong>Next.js</strong>, <strong>Emotion</strong>을 사용해요.
           </S.Sentence>
         )}
-        <S.OtherSkills>{otherSkills.join(' · ')}</S.OtherSkills>
       </S.Prose>
+      <S.Marquee>
+        <S.Track ref={trackRef}>
+          <SkillGroup />
+          <SkillGroup hidden />
+        </S.Track>
+      </S.Marquee>
     </S.Section>
   )
 }

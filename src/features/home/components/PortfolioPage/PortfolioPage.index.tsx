@@ -7,8 +7,9 @@ import { ProjectDetail } from 'features/projects/components/ProjectDetail/Projec
 import { ProjectList } from 'features/projects/components/ProjectList/ProjectList.index'
 import { SkillsSection } from 'features/skills/components/SkillsSection/SkillsSection.index'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Footer } from 'shared/components/Footer/Footer.index'
+import { jumpTo } from 'shared/components/SmoothScroll/SmoothScroll.index'
 import { TopBar } from 'shared/components/TopBar/TopBar.index'
 import { useLang } from 'shared/hooks/useLang'
 import { strings } from 'shared/i18n/strings'
@@ -27,6 +28,7 @@ const viewMotion = {
 export function PortfolioPage() {
   const { lang, toggleLang } = useLang()
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const listScroll = useRef(0)
   const t = strings[lang]
 
   useEffect(() => {
@@ -37,10 +39,11 @@ export function PortfolioPage() {
   }, [])
 
   const select = (id: string | null) => {
+    // 목록에서 상세로 들어갈 때의 위치를 기억해 뒤로 왔을 때 복원합니다
+    if (id && !selectedId) listScroll.current = window.scrollY
     setSelectedId(id)
     if (id) localStorage.setItem(STORAGE_KEY, id)
     else localStorage.removeItem(STORAGE_KEY)
-    window.scrollTo(0, 0)
   }
 
   const index = projects.findIndex((project) => project.id === selectedId)
@@ -48,7 +51,20 @@ export function PortfolioPage() {
 
   return (
     <MotionConfig reducedMotion='user'>
-      <AnimatePresence mode='wait'>
+      <AnimatePresence
+        mode='wait'
+        onExitComplete={() => {
+          if (detail) {
+            jumpTo(0)
+            return
+          }
+          // 목록 화면이 마운트되어 문서 높이가 복원된 다음에 점프해야
+          // 저장해 둔 위치가 잘리지 않습니다
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => jumpTo(listScroll.current)),
+          )
+        }}
+      >
         {detail ? (
           <motion.div key={detail.id} {...viewMotion}>
             <ProjectDetail
@@ -66,8 +82,8 @@ export function PortfolioPage() {
             <S.Page>
               <S.Banner>
                 <S.BannerImage src={asset('/assets/banner.jpeg')} alt='' />
+                <TopBar langLabel={t.langButton} onToggleLang={toggleLang} />
               </S.Banner>
-              <TopBar langLabel={t.langButton} onToggleLang={toggleLang} />
               <S.Container>
                 <Hero t={t} />
                 <ProjectList

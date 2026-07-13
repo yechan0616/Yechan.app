@@ -4,11 +4,13 @@ import type { Project } from 'features/projects/types'
 import { useState } from 'react'
 import { ImageSlot } from 'shared/components/ImageSlot/ImageSlot.index'
 import { SectionTitle } from 'shared/components/SectionTitle/SectionTitle.index'
+import { useIsMobile } from 'shared/hooks/useIsMobile'
 import type { Lang } from 'shared/i18n/strings'
 import { fade, fadeUp, stagger, viewportOnce } from 'shared/styles/motion'
 import * as S from './ProjectList.styled'
 
 const PAGE_SIZE = 5
+const MOBILE_PAGE_SIZE = 3
 
 interface ProjectListProps {
   projects: Project[]
@@ -17,9 +19,12 @@ interface ProjectListProps {
 }
 
 export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
-  const [page, setPage] = useState(0)
-  const pageCount = Math.max(1, Math.ceil(projects.length / PAGE_SIZE))
-  const paged = projects.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+  const [rawPage, setPage] = useState(0)
+  const isMobile = useIsMobile()
+  const pageSize = isMobile ? MOBILE_PAGE_SIZE : PAGE_SIZE
+  const pageCount = Math.max(1, Math.ceil(projects.length / pageSize))
+  const page = Math.min(rawPage, pageCount - 1)
+  const paged = projects.slice(page * pageSize, (page + 1) * pageSize)
 
   return (
     <S.Section
@@ -31,7 +36,7 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
     >
       <S.Head>
         <SectionTitle>Projects</SectionTitle>
-        {projects.length > PAGE_SIZE && (
+        {projects.length > pageSize && (
           <S.Pager>
             <S.PagerButton
               type='button'
@@ -55,11 +60,11 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
           </S.Pager>
         )}
       </S.Head>
-      <S.List variants={stagger}>
+      <S.List key={page} variants={stagger} initial='hidden' animate='visible'>
         {paged.map((project) => (
           <S.Item key={project.id} variants={fadeUp}>
             <S.ItemButton type='button' onClick={() => onSelect(project.id)}>
-              <article>
+              <S.Content>
                 <S.TitleRow>
                   <S.ItemTitle>
                     {project.title[lang]}
@@ -69,11 +74,15 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
                 </S.TitleRow>
                 <S.Summary>{project.summary[lang]}</S.Summary>
                 <S.TechStack>{project.techStack.join(' · ')}</S.TechStack>
-              </article>
+              </S.Content>
+              <S.Thumb>
+                <ImageSlot
+                  image={project.image}
+                  alt={project.title[lang]}
+                  radius={0}
+                />
+              </S.Thumb>
             </S.ItemButton>
-            <S.Thumb>
-              <ImageSlot image={project.image} alt={project.title[lang]} />
-            </S.Thumb>
           </S.Item>
         ))}
       </S.List>

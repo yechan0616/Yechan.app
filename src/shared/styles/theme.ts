@@ -7,7 +7,7 @@ export const theme = {
     muted: '#767676',
     faint: '#9b9a97',
     border: '#e7e7e5',
-    divider: '#ececec',
+    divider: '#d9d8d5',
     surface: '#f7f7f5',
     accent: '#16a34a',
   },

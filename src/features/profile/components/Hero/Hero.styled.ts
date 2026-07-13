@@ -1,33 +1,26 @@
 import styled from '@emotion/styled'
 
-export const Section = styled.section`
-  padding-top: 48px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-top: 36px;
-  }
-`
+export const Section = styled.section``
 
 export const Profile = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
   hgroup {
     margin: 0;
   }
 `
 
 export const Avatar = styled.div`
-  flex: none;
-  width: 56px;
-  height: 56px;
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin-top: -38px;
+  border: 3px solid ${({ theme }) => theme.colors.background};
   border-radius: 50%;
   overflow: hidden;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
+    margin-top: -32px;
   }
 `
 
@@ -39,7 +32,7 @@ export const AvatarImage = styled.img`
 `
 
 export const Name = styled.h1`
-  margin: 0;
+  margin: 14px 0 0;
   color: ${({ theme }) => theme.colors.text};
   font-size: 32px;
   font-weight: 700;
@@ -52,7 +45,7 @@ export const Name = styled.h1`
 `
 
 export const Role = styled.p`
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: ${({ theme }) => theme.colors.muted};
   font-size: 15px;
   line-height: 1.2;
@@ -66,6 +59,11 @@ export const Bio = styled.p`
   color: ${({ theme }) => theme.colors.body};
   font-size: 14px;
   line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 20px;
+    font-size: 15px;
+  }
 `
 
 export const Now = styled.p`
@@ -94,22 +92,40 @@ export const Links = styled.address`
   gap: 24px;
   margin-top: 24px;
   font-style: normal;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 16px;
+  }
 `
 
 export const EmailButton = styled.button`
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 0;
+  gap: 3px;
+  padding: 10px 0;
   border: 0;
   background: none;
   color: ${({ theme }) => theme.colors.muted};
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active {
+    opacity: 0.4;
   }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 15px;
+  }
+`
+
+export const EmailIcon = styled.span`
+  font-size: 13px;
 `

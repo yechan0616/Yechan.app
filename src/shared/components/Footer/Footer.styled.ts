@@ -2,12 +2,16 @@ import styled from '@emotion/styled'
 
 export const Footer = styled.footer`
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
   margin-top: 96px;
   padding-top: 16px;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 64px;
+  }
 `
 
 export const Copy = styled.p`
@@ -38,8 +42,14 @@ export const Updated = styled.span`
     transition: opacity 0.15s ease;
   }
 
-  &:hover::after {
+  &[data-open]::after {
     opacity: 1;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      opacity: 1;
+    }
   }
 
   &[data-tooltip='']::after {
@@ -49,11 +59,17 @@ export const Updated = styled.span`
 
 export const EmailLink = styled.a`
   color: ${({ theme }) => theme.colors.faint};
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `

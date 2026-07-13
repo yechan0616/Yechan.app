@@ -1,28 +1,22 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  width: 100%;
-  max-width: ${({ theme }) => theme.layout.maxWidth};
-  margin: 0 auto;
-  padding: 16px 32px 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-`
-
-export const Row = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 12px;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
-  gap: 8px;
+  gap: 6px;
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
 `
 
 export const FontControls = styled.fieldset`
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -32,18 +26,25 @@ export const IconButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   border: 0;
   background: none;
-  color: ${({ theme }) => theme.colors.faint};
+  color: ${({ theme }) => theme.colors.soft};
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `
 
@@ -56,17 +57,25 @@ export const Divider = styled.span`
 export const LangButton = styled.button`
   display: inline-flex;
   align-items: center;
-  height: 26px;
-  padding: 0 6px;
+  justify-content: center;
+  width: 52px;
+  height: 28px;
+  padding: 0;
   border: 0;
   background: none;
-  color: ${({ theme }) => theme.colors.faint};
+  color: ${({ theme }) => theme.colors.soft};
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `

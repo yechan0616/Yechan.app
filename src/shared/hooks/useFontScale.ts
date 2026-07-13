@@ -8,8 +8,8 @@ const clamp = (value: number) =>
   Math.min(1.3, Math.max(0.85, Math.round(value * 100) / 100))
 
 const applyZoom = (scale: number) => {
-  if (scale === 1) document.documentElement.style.removeProperty('zoom')
-  else document.documentElement.style.setProperty('zoom', String(scale))
+  if (scale === 1) document.documentElement.style.removeProperty('--font-scale')
+  else document.documentElement.style.setProperty('--font-scale', String(scale))
 }
 
 export function useFontScale() {

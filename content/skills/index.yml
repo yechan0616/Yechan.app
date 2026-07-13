@@ -7,6 +7,7 @@ other:
   - Redis
   - TanStack Query
   - Zustand
+  - Emotion
   - Tailwind CSS
   - Docker
   - AWS

@@ -1,0 +1,56 @@
+import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
+
+export const Section = styled(motion.section)`
+  margin-top: 64px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 56px;
+  }
+`
+
+export const List = styled(motion.ul)`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0 0;
+  padding: 0;
+`
+
+export const Row = styled(motion.li)`
+  display: flex;
+  gap: 24px;
+  padding: 14px 0;
+
+  & + & {
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
+  }
+`
+
+export const Year = styled.span`
+  flex: none;
+  width: 48px;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+`
+
+export const Events = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+`
+
+export const Event = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.colors.soft};
+  font-size: 14px;
+  line-height: 1.7;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 13px;
+  }
+`

@@ -50,5 +50,18 @@ export default defineConfig({
         other: s.array(s.string()),
       }),
     },
+    history: {
+      name: 'History',
+      pattern: 'history/index.yml',
+      single: true,
+      schema: s.object({
+        items: s.array(
+          s.object({
+            year: s.number(),
+            events: s.array(localized),
+          }),
+        ),
+      }),
+    },
   },
 })

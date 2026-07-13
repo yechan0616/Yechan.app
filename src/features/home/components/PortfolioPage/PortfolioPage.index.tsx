@@ -1,6 +1,7 @@
 'use client'
 
 import { ExperienceSection } from 'features/experience/components/ExperienceSection/ExperienceSection.index'
+import { HistorySection } from 'features/history/components/HistorySection/HistorySection.index'
 import { Hero } from 'features/profile/components/Hero/Hero.index'
 import { projects } from 'features/projects/api'
 import { ProjectDetail } from 'features/projects/components/ProjectDetail/ProjectDetail.index'
@@ -92,6 +93,7 @@ export function PortfolioPage() {
                   onSelect={select}
                 />
                 <ExperienceSection lang={lang} t={t} />
+                <HistorySection lang={lang} />
                 <SkillsSection lang={lang} />
                 <Footer lang={lang} t={t} />
               </S.Container>

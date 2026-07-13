@@ -82,7 +82,7 @@ export function PortfolioPage() {
             <S.Page>
               <S.Banner>
                 <S.BannerImage src={asset('/assets/banner.jpeg')} alt='' />
-                <TopBar langLabel={t.langButton} onToggleLang={toggleLang} />
+                <TopBar lang={lang} onToggleLang={toggleLang} />
               </S.Banner>
               <S.Container>
                 <Hero t={t} />

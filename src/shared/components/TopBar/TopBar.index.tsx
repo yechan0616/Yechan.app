@@ -1,14 +1,15 @@
 'use client'
 
 import { useFontScale } from 'shared/hooks/useFontScale'
+import type { Lang } from 'shared/i18n/strings'
 import * as S from './TopBar.styled'
 
 interface TopBarProps {
-  langLabel: string
+  lang: Lang
   onToggleLang: () => void
 }
 
-export function TopBar({ langLabel, onToggleLang }: TopBarProps) {
+export function TopBar({ lang, onToggleLang }: TopBarProps) {
   const { decrease, reset, increase } = useFontScale()
 
   return (
@@ -37,8 +38,14 @@ export function TopBar({ langLabel, onToggleLang }: TopBarProps) {
         </S.IconButton>
       </S.FontControls>
       <S.Divider aria-hidden='true' />
-      <S.LangButton type='button' onClick={onToggleLang}>
-        {langLabel}
+      <S.LangButton
+        type='button'
+        onClick={onToggleLang}
+        aria-label='Switch language'
+      >
+        <S.LangOption active={lang === 'ko'}>KO</S.LangOption>
+        <S.LangSlash aria-hidden='true'>/</S.LangSlash>
+        <S.LangOption active={lang === 'en'}>EN</S.LangOption>
       </S.LangButton>
     </S.Container>
   )

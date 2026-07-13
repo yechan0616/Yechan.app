@@ -58,24 +58,30 @@ export const LangButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   width: 52px;
   height: 28px;
   padding: 0;
   border: 0;
   background: none;
-  color: ${({ theme }) => theme.colors.soft};
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.15s ease, opacity 0.15s ease;
+  transition: opacity 0.15s ease;
 
   &:active {
     opacity: 0.4;
   }
+`
 
-  @media (hover: hover) {
-    &:hover {
-      color: ${({ theme }) => theme.colors.text};
-    }
-  }
+export const LangOption = styled.span<{ active: boolean }>`
+  color: ${({ theme, active }) =>
+    active ? theme.colors.text : theme.colors.faint};
+  font-weight: ${({ active }) => (active ? 600 : 500)};
+  transition: color 0.15s ease;
+`
+
+export const LangSlash = styled.span`
+  color: ${({ theme }) => theme.colors.faint};
+  font-weight: 400;
 `

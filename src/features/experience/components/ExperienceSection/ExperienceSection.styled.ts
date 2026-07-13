@@ -5,7 +5,7 @@ export const Section = styled(motion.section)`
   margin-top: 64px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 56px;
+    margin-top: 72px;
   }
 `
 
@@ -29,6 +29,12 @@ export const TimelineItem = styled(motion.li)`
 
   article {
     padding: 0 0 24px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    article {
+      padding: 0 0 20px;
+    }
   }
 `
 

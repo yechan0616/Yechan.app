@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const FontControls = styled.fieldset`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0;
   margin: 0;
   padding: 0;
   border: 0;
@@ -58,8 +58,8 @@ export const LangButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  width: 52px;
+  gap: 6px;
+  width: 56px;
   height: 28px;
   padding: 0;
   border: 0;

@@ -1,7 +1,7 @@
 ---
 title: Oneday
 year: 2026
-order: 2
+order: 4
 techStack: [Expo, React Native, TypeScript, Emotion]
 image: /assets/projects/oneday.png
 meta:

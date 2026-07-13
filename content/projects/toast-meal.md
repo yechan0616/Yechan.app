@@ -2,8 +2,8 @@
 title:
   ko: Toast Meal
   en: Toast Meal
-year: 2026
-order: 4
+year: 2025
+order: 2
 techStack: [React, Spring Boot, PostgreSQL, Stable Diffusion]
 image: /assets/projects/toast-meal.png
 meta:

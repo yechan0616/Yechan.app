@@ -5,7 +5,7 @@ import type { Project } from './types'
 const toParagraphs = (text: string) => text.split(/\n\s*\n/)
 
 export const projects: Project[] = [...entries]
-  .sort((a, b) => b.year - a.year || a.order - b.order)
+  .sort((a, b) => a.order - b.order || b.year - a.year)
   .map((entry) => {
     const { en, ko } = splitByLang(entry.raw)
     return {

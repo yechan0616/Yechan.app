@@ -2,15 +2,48 @@ import styled from '@emotion/styled'
 
 export const Footer = styled.footer`
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 16px;
   margin-top: 96px;
   padding-top: 16px;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 64px;
+  }
+`
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+`
+
+export const ModeButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: -6px -8px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: ${({ theme }) => theme.colors.faint};
+  cursor: pointer;
+  transition: color 0.15s ease, opacity 0.15s ease;
+
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `
 

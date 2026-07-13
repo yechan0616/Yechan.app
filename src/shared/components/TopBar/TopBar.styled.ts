@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   padding: 2px 6px;
-  background: rgba(255, 255, 255, 0.85);
+  background: ${({ theme }) => theme.colors.pill};
   backdrop-filter: blur(8px);
   border-radius: 8px;
 `

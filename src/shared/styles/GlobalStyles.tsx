@@ -1,6 +1,12 @@
 'use client'
 
 import { css, Global, useTheme } from '@emotion/react'
+import { palettes } from './theme'
+
+const cssVars = (palette: Record<string, string>) =>
+  Object.entries(palette)
+    .map(([name, value]) => `--c-${name}: ${value};`)
+    .join('\n')
 
 export function GlobalStyles() {
   const theme = useTheme()
@@ -8,6 +14,14 @@ export function GlobalStyles() {
   return (
     <Global
       styles={css`
+        :root {
+          ${cssVars(palettes.light)}
+        }
+
+        html[data-mode='dark'] {
+          ${cssVars(palettes.dark)}
+        }
+
         *,
         *::before,
         *::after {

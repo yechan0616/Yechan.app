@@ -1,6 +1,8 @@
 'use client'
 
+import { MonitorIcon, MoonIcon, SunIcon } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
+import { useColorMode } from 'shared/hooks/useColorMode'
 import type { Lang, Strings } from 'shared/i18n/strings'
 import * as S from './Footer.styled'
 
@@ -35,6 +37,7 @@ interface FooterProps {
 export function Footer({ lang, t }: FooterProps) {
   const [updated, setUpdated] = useState({ label: '', exact: '' })
   const [tipOpen, setTipOpen] = useState(false)
+  const { pref, cycle } = useColorMode()
 
   useEffect(() => {
     setUpdated({ label: relativeLabel(lang), exact: exactLabel() })
@@ -47,17 +50,29 @@ export function Footer({ lang, t }: FooterProps) {
 
   return (
     <S.Footer>
-      <S.EmailLink href={`mailto:${EMAIL}`}>{EMAIL}</S.EmailLink>
-      <S.Copy>
-        © {buildDate.getFullYear()} Yechan Moon ·{' '}
-        <S.Updated
-          data-tooltip={updated.exact}
-          data-open={tipOpen || undefined}
-          onClick={toggleTip}
-        >
-          {t.updated} {updated.label}
-        </S.Updated>
-      </S.Copy>
+      <S.Column>
+        <S.EmailLink href={`mailto:${EMAIL}`}>{EMAIL}</S.EmailLink>
+        <S.Copy>
+          © {buildDate.getFullYear()} Yechan Moon ·{' '}
+          <S.Updated
+            data-tooltip={updated.exact}
+            data-open={tipOpen || undefined}
+            onClick={toggleTip}
+          >
+            {t.updated} {updated.label}
+          </S.Updated>
+        </S.Copy>
+      </S.Column>
+      <S.ModeButton
+        type='button'
+        onClick={cycle}
+        aria-label={`Color mode: ${pref}`}
+        title={pref}
+      >
+        {pref === 'system' && <MonitorIcon size={15} aria-hidden='true' />}
+        {pref === 'light' && <SunIcon size={15} aria-hidden='true' />}
+        {pref === 'dark' && <MoonIcon size={15} aria-hidden='true' />}
+      </S.ModeButton>
     </S.Footer>
   )
 }

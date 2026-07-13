@@ -82,13 +82,12 @@ export const ItemButton = styled.button`
   cursor: pointer;
   transition: background 0.15s ease, opacity 0.15s ease;
 
-  /* 스크롤 중 스치는 터치에는 반응하지 않도록 진입만 살짝 늦춥니다 */
-  &:active {
-    opacity: 0.6;
-    transition-delay: 0.1s;
-  }
-
+  /* 터치 기기에선 스크롤 중 카드가 번쩍이지 않도록 눌림 효과를 마우스 환경에만 둡니다 */
   @media (hover: hover) {
+    &:active {
+      opacity: 0.6;
+    }
+
     &:hover {
       background: ${({ theme }) => theme.colors.surface};
     }

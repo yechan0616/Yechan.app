@@ -22,8 +22,8 @@ items:
   - year: 2025
     events:
       - label:
-          ko: 해커톤 팀 프로젝트 Toast Meal 개발
-          en: Built Toast Meal, a hackathon team project
+          ko: SCSC 해커톤 팀 프로젝트 Toast Meal 개발
+          en: Built Toast Meal, a SCSC hackathon team project
         project: toast-meal
   - year: 2024
     events:

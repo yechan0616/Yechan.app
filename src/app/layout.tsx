@@ -8,13 +8,17 @@ import { GlobalStyles } from 'shared/styles/GlobalStyles'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Yechan Moon | Frontend Developer',
-  description: '프론트엔드 개발자 문예찬의 포트폴리오',
+  title: 'Yechan Moon - Frontend Developer',
+  description: 'ㅎㅇ',
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang='ko' className={inter.variable}>
+    <html lang='en' className={inter.variable}>
       <body>
         <EmotionProvider>
           <GlobalStyles />

@@ -55,6 +55,7 @@ export const PageLabel = styled.span`
 /* 페이지 전환 시 리스트 높이 변화를 부드럽게 만드는 클리핑 영역.
    아이템 버튼의 가로 오버행(±16px)이 잘리지 않도록 여백을 안쪽으로 넣습니다 */
 export const ListViewport = styled(motion.div)`
+  position: relative;
   overflow: hidden;
   margin: 12px -16px -30px;
   padding: 0 16px;
@@ -62,12 +63,13 @@ export const ListViewport = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin: 20px 0 -16px;
     padding: 0;
+    touch-action: pan-y;
   }
 `
 
 /* 등장 모션(y 16px)이 아래로 잘리지 않도록 측정 높이에 여유를 포함합니다.
    position: relative는 페이드 아웃되는 리스트(position: absolute)의 기준점입니다 */
-export const ListInner = styled.div`
+export const ListInner = styled(motion.div)`
   position: relative;
   padding-bottom: 16px;
 `
@@ -138,7 +140,7 @@ export const ItemButton = styled.button`
   }
 `
 
-export const Content = styled.article`
+export const Content = styled(motion.article)`
   flex: 1;
   min-width: 0;
 

@@ -10,16 +10,14 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 export const metadata: Metadata = {
   metadataBase: new URL('https://yechan.app'),
   title: 'Yechan Moon',
-  description:
-    'so far so good - Frontend Developer',
+  description: 'so far so good - Frontend Developer',
   icons: {
     icon: '/icon.png',
     apple: '/apple-icon.png',
   },
   openGraph: {
     title: 'Yechan Moon',
-    description:
-      'so far so good - Frontend Developer',
+    description: 'so far so good - Frontend Developer',
     url: 'https://yechan.app',
     siteName: 'Yechan.app',
     type: 'website',

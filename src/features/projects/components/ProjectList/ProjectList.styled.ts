@@ -52,17 +52,37 @@ export const PageLabel = styled.span`
   font-variant-numeric: tabular-nums;
 `
 
+/* 페이지 전환 시 리스트 높이 변화를 부드럽게 만드는 클리핑 영역.
+   아이템 버튼의 가로 오버행(±16px)이 잘리지 않도록 여백을 안쪽으로 넣습니다 */
+export const ListViewport = styled(motion.div)`
+  overflow: hidden;
+  margin: 12px -16px -30px;
+  padding: 0 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin: 20px 0 -16px;
+    padding: 0;
+  }
+`
+
+/* 등장 모션(y 16px)이 아래로 잘리지 않도록 측정 높이에 여유를 포함합니다.
+   position: relative는 페이드 아웃되는 리스트(position: absolute)의 기준점입니다 */
+export const ListInner = styled.div`
+  position: relative;
+  padding-bottom: 16px;
+`
+
 export const List = styled(motion.ul)`
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin: 12px 0 -14px;
+  width: 100%;
+  margin: 0;
   padding: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     gap: 44px;
-    margin: 20px 0 0;
   }
 `
 
@@ -138,6 +158,7 @@ export const TitleRow = styled.div`
 `
 
 export const ItemTitle = styled.h3`
+  min-width: 0;
   margin: 0;
   color: ${({ theme }) => theme.colors.text};
   font-size: 16px;
@@ -164,6 +185,7 @@ export const Year = styled.time`
   font-size: 12px;
 `
 
+/* 카드 높이가 일정하도록 텍스트는 한 줄로 고정하고, 넘치면 SlidingText가 슬라이드로 보여줍니다 */
 export const Summary = styled.p`
   margin: 8px 0 0;
   max-width: 520px;

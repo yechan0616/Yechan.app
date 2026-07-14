@@ -34,18 +34,23 @@ export function HistorySection({ lang, onSelect }: HistorySectionProps) {
             <S.Events>
               {item.events.map((event) => {
                 const linked = event.project && projectIds.has(event.project)
+                const label = event.label[lang]
+                const splitAt = label.lastIndexOf(' ') + 1
                 const body = (
                   <>
-                    {event.label[lang]}
-                    {(linked || event.href) && (
-                      <S.Arrow aria-hidden='true'>
-                        {event.href ? (
-                          <ArrowSquareOutIcon size='1em' />
-                        ) : (
-                          <ArrowRightIcon size='1em' />
-                        )}
-                      </S.Arrow>
-                    )}
+                    {label.slice(0, splitAt)}
+                    <S.Tail>
+                      {label.slice(splitAt)}
+                      {(linked || event.href) && (
+                        <S.Arrow aria-hidden='true'>
+                          {event.href ? (
+                            <ArrowSquareOutIcon size='1em' />
+                          ) : (
+                            <ArrowRightIcon size='1em' />
+                          )}
+                        </S.Arrow>
+                      )}
+                    </S.Tail>
                     {event.desc && (
                       <S.EventDesc>{event.desc[lang]}</S.EventDesc>
                     )}

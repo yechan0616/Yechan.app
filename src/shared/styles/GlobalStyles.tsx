@@ -36,6 +36,8 @@ export function GlobalStyles() {
           font-family: var(--font-inter), 'Pretendard Variable', -apple-system,
             BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
           -webkit-font-smoothing: antialiased;
+          word-break: keep-all;
+          overflow-wrap: break-word;
           user-select: none;
           -webkit-user-select: none;
         }

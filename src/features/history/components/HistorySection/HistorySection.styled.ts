@@ -83,6 +83,10 @@ export const EventButton = styled.button`
 
 export const EventLink = EventButton.withComponent('a')
 
+export const Tail = styled.span`
+  white-space: nowrap;
+`
+
 export const Arrow = styled.span`
   display: inline-block;
   margin-left: 6px;

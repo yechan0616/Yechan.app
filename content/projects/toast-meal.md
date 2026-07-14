@@ -4,7 +4,7 @@ title:
   en: Toast Meal
 year: 2025
 order: 5
-techStack: [Next.js, React, React Native, Emotion, Spring Boot, PostgreSQL]
+techStack: [Next.js, React, React Native, Emotion, Spring Boot, PostgreSQL] 
 image: /assets/projects/toast-meal.png
 meta:
   ko: The Toast · 프론트엔드 개발

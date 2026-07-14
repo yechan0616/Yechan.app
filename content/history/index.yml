@@ -16,8 +16,8 @@ items:
           en: Building NextAI, an AI-powered predictive maintenance platform, with team Next.
         project: nextai
       - label:
-          ko: 개인 포트폴리오 Yechan.app 공개
-          en: Launched personal portfolio Yechan.app
+          ko: 개인 포트폴리오 Yechan.app 제작
+          en: Built personal portfolio Yechan.app
         project: yechan-app
   - year: 2025
     events:

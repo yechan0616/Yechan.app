@@ -131,7 +131,7 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
     if (!isMobile || pageCount <= 1) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     hintPlayed.current = true
-    animate(listX, -12, { delay: 0.3, duration: 0.7, ease: easeOutExpo }).then(
+    animate(listX, -12, { delay: 1.4, duration: 0.7, ease: easeOutExpo }).then(
       () => {
         if (touchStart.current) return
         animate(listX, 0, {

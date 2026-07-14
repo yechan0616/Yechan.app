@@ -76,11 +76,9 @@ export function PortfolioPage() {
   }, [])
 
   const select = (id: string | null) => {
-    // 목록에서 상세로 들어갈 때의 위치를 기억해 뒤로 왔을 때 복원합니다
     if (id && !selectedId) listScroll.current = window.scrollY
     setInstantNav(false)
     if (!id && pushedDetail.current) {
-      // 우리가 쌓은 히스토리는 실제로 되돌려야 이후 시스템 뒤로가기가 어긋나지 않습니다
       pushedDetail.current = false
       expectPop.current = true
       history.back()
@@ -90,7 +88,6 @@ export function PortfolioPage() {
       ? `${window.location.pathname}?${PARAM}=${id}`
       : window.location.pathname
     if (id && selectedId) {
-      // 상세 간 이동(이전/다음)은 히스토리를 쌓지 않고 현재 항목을 교체합니다
       history.replaceState(null, '', url)
     } else if (id) {
       history.pushState(null, '', url)

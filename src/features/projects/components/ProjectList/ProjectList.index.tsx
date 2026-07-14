@@ -123,7 +123,7 @@ export function ProjectList({ projects, lang, onSelect }: ProjectListProps) {
   const hintPlayed = useRef(false)
   const hintInView = useInView(listRef, {
     once: true,
-    margin: '0px 0px -45% 0px',
+    margin: '0px 0px -20% 0px',
   })
 
   useEffect(() => {

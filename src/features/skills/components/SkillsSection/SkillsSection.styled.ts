@@ -74,3 +74,20 @@ export const SkillIcon = styled.img`
   height: 18px;
   width: auto;
 `
+
+export const Certifications = styled.p`
+  margin: 20px 0 0;
+  color: ${({ theme }) => theme.colors.faint};
+  font-size: 12px;
+  line-height: 1.7;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 11px;
+  }
+`
+
+export const CertLabel = styled.span`
+  margin-right: 10px;
+  color: ${({ theme }) => theme.colors.body};
+  font-weight: 600;
+`

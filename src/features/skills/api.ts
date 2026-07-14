@@ -24,3 +24,5 @@ export const otherSkills: Skill[] = skills.other.map((name) => ({
   name,
   icon: icons[name] ? `/assets/skills/${icons[name]}.svg` : undefined,
 }))
+
+export const certifications = skills.certifications

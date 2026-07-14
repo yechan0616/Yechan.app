@@ -1,6 +1,6 @@
 'use client'
 
-import { otherSkills } from 'features/skills/api'
+import { certifications, otherSkills } from 'features/skills/api'
 import { useEffect, useRef } from 'react'
 import { SectionTitle } from 'shared/components/SectionTitle/SectionTitle.index'
 import type { Lang } from 'shared/i18n/strings'
@@ -113,6 +113,10 @@ export function SkillsSection({ lang }: { lang: Lang }) {
           <SkillGroup hidden />
         </S.Track>
       </S.Marquee>
+      <S.Certifications>
+        <S.CertLabel>{lang === 'en' ? 'Certifications' : '자격증'}</S.CertLabel>
+        {certifications.map((cert) => cert[lang]).join(' · ')}
+      </S.Certifications>
     </S.Section>
   )
 }

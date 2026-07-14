@@ -60,6 +60,7 @@ export default defineConfig({
       single: true,
       schema: s.object({
         other: s.array(s.string()),
+        certifications: s.array(localized),
       }),
     },
   },

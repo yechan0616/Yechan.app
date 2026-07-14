@@ -13,3 +13,10 @@ other:
   - AWS
   - GitHub Actions
   - Figma
+certifications:
+  - ko: 지게차운전기능사
+    en: Craftsman Forklift Truck Operator
+  - ko: 전기기능사
+    en: Craftsman Electricity
+  - ko: 초경량비행장치조종자(무인멀티콥터 1종)
+    en: Ultralight Vehicle Pilot (Unmanned Multicopter, Class 1)

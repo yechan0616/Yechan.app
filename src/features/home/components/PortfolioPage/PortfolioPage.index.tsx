@@ -13,37 +13,93 @@ import { jumpTo } from 'shared/components/SmoothScroll/SmoothScroll.index'
 import { TopBar } from 'shared/components/TopBar/TopBar.index'
 import { useLang } from 'shared/hooks/useLang'
 import { strings } from 'shared/i18n/strings'
+import { easeOutExpo } from 'shared/styles/motion'
 import { asset } from 'shared/utils/asset'
 import * as S from './PortfolioPage.styled'
 
-const STORAGE_KEY = 'portfolio-selected-project'
+const PARAM = 'project'
 
-const viewMotion = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, transition: { duration: 0.15 } },
-  transition: { duration: 0.4, ease: 'easeOut' },
-} as const
+// 현재 URL의 ?project= 값이 실제 프로젝트를 가리키면 그 id를 돌려줍니다
+const readProjectParam = () => {
+  const id = new URLSearchParams(window.location.search).get(PARAM)
+  return id && projects.some((project) => project.id === id) ? id : null
+}
+
+/* 시스템 뒤로가기(스와이프 포함)는 브라우저가 자체 전환을 보여주므로,
+   그 위에 우리 애니메이션이 겹치지 않도록 instant일 땐 즉시 교체합니다 */
+const viewVariants = {
+  initial: (instant: boolean) =>
+    instant ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+  animate: (instant: boolean) => ({
+    opacity: 1,
+    y: 0,
+    transition: instant
+      ? { duration: 0 }
+      : { duration: 0.55, ease: easeOutExpo },
+  }),
+  exit: (instant: boolean) => ({
+    opacity: instant ? 1 : 0,
+    transition: { duration: instant ? 0 : 0.15 },
+  }),
+}
 
 export function PortfolioPage() {
   const { lang, toggleLang } = useLang()
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [instantNav, setInstantNav] = useState(false)
   const listScroll = useRef(0)
+  // 상세 히스토리를 우리가 쌓았는지 — 쌓았다면 뒤로가기 버튼이 history.back()으로 되돌립니다
+  const pushedDetail = useRef(false)
+  // 다음 popstate가 우리 뒤로가기 버튼에서 온 것인지 표시합니다
+  const expectPop = useRef(false)
   const t = strings[lang]
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved && projects.some((project) => project.id === saved)) {
-      setSelectedId(saved)
+    // 스크롤 복원은 onExitComplete에서 직접 처리하므로 브라우저 기본 동작을 끕니다
+    history.scrollRestoration = 'manual'
+    const initial = readProjectParam()
+    if (initial) {
+      // 공유 링크로 바로 들어온 경우 목록을 거치는 전환 없이 상세를 띄웁니다
+      setInstantNav(true)
+      setSelectedId(initial)
     }
+    // 브라우저 뒤로/앞으로 가기를 URL 파라미터와 동기화합니다
+    const onPopState = () => {
+      const id = readProjectParam()
+      setInstantNav(!expectPop.current)
+      expectPop.current = false
+      pushedDetail.current = id !== null
+      setSelectedId(id)
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
   const select = (id: string | null) => {
     // 목록에서 상세로 들어갈 때의 위치를 기억해 뒤로 왔을 때 복원합니다
     if (id && !selectedId) listScroll.current = window.scrollY
+    setInstantNav(false)
+    if (!id && pushedDetail.current) {
+      // 우리가 쌓은 히스토리는 실제로 되돌려야 이후 시스템 뒤로가기가 어긋나지 않습니다
+      pushedDetail.current = false
+      expectPop.current = true
+      history.back()
+      return
+    }
+    const url = id
+      ? `${window.location.pathname}?${PARAM}=${id}`
+      : window.location.pathname
+    if (id && selectedId) {
+      // 상세 간 이동(이전/다음)은 히스토리를 쌓지 않고 현재 항목을 교체합니다
+      history.replaceState(null, '', url)
+    } else if (id) {
+      history.pushState(null, '', url)
+      pushedDetail.current = true
+    } else {
+      // 공유 링크로 바로 들어온 상세: 아래에 목록 히스토리가 없으므로 교체합니다
+      history.replaceState(null, '', url)
+    }
     setSelectedId(id)
-    if (id) localStorage.setItem(STORAGE_KEY, id)
-    else localStorage.removeItem(STORAGE_KEY)
   }
 
   const index = projects.findIndex((project) => project.id === selectedId)
@@ -53,6 +109,7 @@ export function PortfolioPage() {
     <MotionConfig reducedMotion='user'>
       <AnimatePresence
         mode='wait'
+        custom={instantNav}
         onExitComplete={() => {
           if (detail) {
             jumpTo(0)
@@ -66,7 +123,14 @@ export function PortfolioPage() {
         }}
       >
         {detail ? (
-          <motion.div key={detail.id} {...viewMotion}>
+          <motion.div
+            key={detail.id}
+            custom={instantNav}
+            variants={viewVariants}
+            initial='initial'
+            animate='animate'
+            exit='exit'
+          >
             <ProjectDetail
               project={detail}
               prev={projects[index - 1]}
@@ -78,7 +142,14 @@ export function PortfolioPage() {
             />
           </motion.div>
         ) : (
-          <motion.div key='list' {...viewMotion}>
+          <motion.div
+            key='list'
+            custom={instantNav}
+            variants={viewVariants}
+            initial='initial'
+            animate='animate'
+            exit='exit'
+          >
             <S.Page>
               <S.Banner>
                 <S.BannerImage src={asset('/assets/banner.jpeg')} alt='' />

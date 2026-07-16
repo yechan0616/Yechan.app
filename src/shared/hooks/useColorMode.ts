@@ -24,17 +24,31 @@ const applyToDocument = (mode: Mode) => {
 
 // 전환 동안만 색상 트랜지션을 켜서 새 팔레트로 부드럽게 크로스페이드합니다
 const FADE_MS = 350
-let fadeTimer: number | undefined
+let fadeCleanup: (() => void) | undefined
 
 const applyWithFade = (mode: Mode) => {
   const root = document.documentElement
+  fadeCleanup?.()
   root.classList.add('mode-transition')
   applyToDocument(mode)
-  window.clearTimeout(fadeTimer)
-  fadeTimer = window.setTimeout(
-    () => root.classList.remove('mode-transition'),
-    FADE_MS,
-  )
+
+  // 타이머로 끊으면 아직 진행 중인 트랜지션이 툭 끊기므로,
+  // 실제 트랜지션이 끝나는 transitionend에 맞춰 클래스를 떼어냅니다
+  const done = () => {
+    fadeCleanup?.()
+  }
+  const onEnd = (event: TransitionEvent) => {
+    if (event.target === document.body) done()
+  }
+  document.body.addEventListener('transitionend', onEnd)
+  // 트랜지션이 아예 발생하지 않는 경우(같은 색 등)를 대비한 여유 있는 안전장치
+  const fallback = window.setTimeout(done, FADE_MS + 400)
+  fadeCleanup = () => {
+    fadeCleanup = undefined
+    window.clearTimeout(fallback)
+    document.body.removeEventListener('transitionend', onEnd)
+    root.classList.remove('mode-transition')
+  }
 }
 
 export function useColorMode() {

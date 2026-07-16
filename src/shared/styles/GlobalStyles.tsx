@@ -22,11 +22,17 @@ export function GlobalStyles() {
           ${cssVars(palettes.dark)}
         }
 
-        /* 컬러 모드 전환은 기본 크로스페이드 대신 원형 리빌 애니메이션이 담당합니다 */
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-          animation: none;
-          mix-blend-mode: normal;
+        /* 모드 전환 순간에만 붙는 클래스 — 색상만 천천히 크로스페이드합니다 */
+        html.mode-transition,
+        html.mode-transition *,
+        html.mode-transition *::before,
+        html.mode-transition *::after {
+          transition:
+            background-color 0.7s ease,
+            color 0.7s ease,
+            border-color 0.7s ease,
+            fill 0.7s ease,
+            stroke 0.7s ease !important;
         }
 
         *,

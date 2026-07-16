@@ -22,52 +22,19 @@ const applyToDocument = (mode: Mode) => {
   document.documentElement.style.colorScheme = mode
 }
 
-// 토글 지점에서 새 테마가 원형으로 번져 나가는 전환 — View Transitions 미지원이면 즉시 적용
-const applyWithReveal = (mode: Mode, origin?: { x: number; y: number }) => {
-  const reduceMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)',
-  ).matches
-  if (
-    !document.startViewTransition ||
-    reduceMotion ||
-    !origin ||
-    document.documentElement.dataset.mode === mode
-  ) {
-    applyToDocument(mode)
-    return
-  }
-  const transition = document.startViewTransition(() => applyToDocument(mode))
-  transition.ready
-    .then(() => {
-      // 스냅샷 박스가 뷰포트 px와 어긋나는 크롬 이슈를 피하려고 백분율 좌표를 씁니다
-      const width = window.innerWidth
-      const height = window.innerHeight
-      const xPct = (origin.x / width) * 100
-      const yPct = (origin.y / height) * 100
-      const radius = Math.hypot(
-        Math.max(origin.x, width - origin.x),
-        Math.max(origin.y, height - origin.y),
-      )
-      // circle()의 % 반지름은 대각선/√2 기준으로 환산됩니다
-      const radiusPct =
-        (radius / (Math.hypot(width, height) / Math.SQRT2)) * 100
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0% at ${xPct}% ${yPct}%)`,
-            `circle(${radiusPct}% at ${xPct}% ${yPct}%)`,
-          ],
-        },
-        {
-          // 천천히 차오르는 느낌이 나도록 여유 있는 길이와 완만한 인-아웃 커브를 씁니다
-          duration: 900,
-          easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
-          pseudoElement: '::view-transition-new(root)',
-        },
-      )
-    })
-    // 연속 클릭이나 백그라운드 탭에서는 전환이 중단될 수 있어요 — 모드는 이미 적용된 뒤라 무시합니다
-    .catch(() => {})
+// 전환 동안만 색상 트랜지션을 켜서 새 팔레트로 천천히 크로스페이드합니다
+const FADE_MS = 700
+let fadeTimer: number | undefined
+
+const applyWithFade = (mode: Mode) => {
+  const root = document.documentElement
+  root.classList.add('mode-transition')
+  applyToDocument(mode)
+  window.clearTimeout(fadeTimer)
+  fadeTimer = window.setTimeout(
+    () => root.classList.remove('mode-transition'),
+    FADE_MS,
+  )
 }
 
 export function useColorMode() {
@@ -82,26 +49,20 @@ export function useColorMode() {
   useEffect(() => {
     if (pref !== 'system') return
     const query = window.matchMedia('(prefers-color-scheme: dark)')
-    const follow = () => applyToDocument(systemMode())
+    const follow = () => applyWithFade(systemMode())
     query.addEventListener('change', follow)
     return () => query.removeEventListener('change', follow)
   }, [pref])
 
-  // 클릭한 요소의 중심을 원형 전환의 시작점으로 씁니다
-  const cycle = (event?: { currentTarget: Element }) => {
+  const cycle = () => {
     const next = NEXT[pref]
     setPref(next)
-    let origin: { x: number; y: number } | undefined
-    if (event) {
-      const rect = event.currentTarget.getBoundingClientRect()
-      origin = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
-    }
     if (next === 'system') {
       localStorage.removeItem(KEY)
-      applyWithReveal(systemMode(), origin)
+      applyWithFade(systemMode())
     } else {
       localStorage.setItem(KEY, next)
-      applyWithReveal(next, origin)
+      applyWithFade(next)
     }
   }
 

@@ -4,6 +4,7 @@ const icons: Record<string, string> = {
   JavaScript: 'javascript',
   Java: 'java',
   'Spring Boot': 'spring-boot',
+  Prisma: 'prisma',
   PostgreSQL: 'postgresql',
   MySQL: 'mysql',
   Redis: 'redis',

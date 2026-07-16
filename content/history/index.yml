@@ -34,8 +34,8 @@ items:
           en: Designing and building a simpler personal finance app on my own.
         project: oneday
       - label:
-          ko: SCSC 해커톤 팀 프로젝트 Toast Meal 개발
-          en: Built Toast Meal, a SCSC hackathon team project
+          ko: 서울대 SCSC 해커톤 팀 프로젝트 Toast Meal 개발
+          en: Built Toast Meal, a team project at the SNU SCSC hackathon
         project: toast-meal
       - label:
           ko: 제5회 전남 학생 SW융합 해커톤 참가

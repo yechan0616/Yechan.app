@@ -52,8 +52,9 @@ const applyWithReveal = (mode: Mode, origin?: { x: number; y: number }) => {
           ],
         },
         {
-          duration: 550,
-          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+          // 천천히 차오르는 느낌이 나도록 여유 있는 길이와 완만한 인-아웃 커브를 씁니다
+          duration: 900,
+          easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
           pseudoElement: '::view-transition-new(root)',
         },
       )

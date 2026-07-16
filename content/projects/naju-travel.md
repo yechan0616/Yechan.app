@@ -2,7 +2,7 @@
 title: Naju Travel
 year: 2024
 order: 6
-techStack: [Next.js, React, React Native, Emotion, Spring Boot, PostgreSQL]
+techStack: [Next.js, React, React Native, Emotion, Prisma, PostgreSQL]
 repositoryUrl: https://github.com/The-Toast-Dev/naju_client
 image: /assets/projects/naju-travel.jpg
 meta:
@@ -17,7 +17,7 @@ summary:
 
 유적지를 직접 방문해 QR 코드로 스탬프를 모으는 스탬프 챌린지를 담았어요. 나주읍성 금성관 같은 명소를 돌며 여행의 추억을 기록으로 남길 수 있어요.
 
-프론트엔드 개발을 맡아 Next.js 웹과 React Native 앱 화면을 Emotion으로 만들고, Spring Boot와 PostgreSQL 기반 백엔드와 연동해요. 소셜 로그인과 JWT 인증, 다크모드와 반응형 레이아웃, PWA 지원까지 직접 구현하며 웹앱의 완성도를 높이고 있어요.
+프론트엔드 개발을 맡아 Next.js 웹과 React Native 앱 화면을 Emotion으로 만들고, Prisma와 PostgreSQL 기반 백엔드와 연동해요. 소셜 로그인과 JWT 인증, 다크모드와 반응형 레이아웃, PWA 지원까지 직접 구현하며 웹앱의 완성도를 높이고 있어요.
 
 <!-- en -->
 
@@ -25,4 +25,4 @@ A travel app that gathers Naju's festivals, exhibitions, and local events into a
 
 It features a stamp challenge where you visit historic sites and collect stamps by scanning QR codes on location, turning visits to landmarks like Geumseonggwan Hall into lasting memories.
 
-As the frontend developer, I build the Next.js web and React Native app screens styled with Emotion, connected to a Spring Boot and PostgreSQL backend. I also implemented social login with JWT authentication, dark mode, responsive layouts, and PWA support to round out the app.
+As the frontend developer, I build the Next.js web and React Native app screens styled with Emotion, connected to a Prisma and PostgreSQL backend. I also implemented social login with JWT authentication, dark mode, responsive layouts, and PWA support to round out the app.

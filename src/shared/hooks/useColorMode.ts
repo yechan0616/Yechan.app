@@ -39,16 +39,23 @@ const applyWithReveal = (mode: Mode, origin?: { x: number; y: number }) => {
   const transition = document.startViewTransition(() => applyToDocument(mode))
   transition.ready
     .then(() => {
-      const { x, y } = origin
+      // 스냅샷 박스가 뷰포트 px와 어긋나는 크롬 이슈를 피하려고 백분율 좌표를 씁니다
+      const width = window.innerWidth
+      const height = window.innerHeight
+      const xPct = (origin.x / width) * 100
+      const yPct = (origin.y / height) * 100
       const radius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y),
+        Math.max(origin.x, width - origin.x),
+        Math.max(origin.y, height - origin.y),
       )
+      // circle()의 % 반지름은 대각선/√2 기준으로 환산됩니다
+      const radiusPct =
+        (radius / (Math.hypot(width, height) / Math.SQRT2)) * 100
       document.documentElement.animate(
         {
           clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${radius}px at ${x}px ${y}px)`,
+            `circle(0% at ${xPct}% ${yPct}%)`,
+            `circle(${radiusPct}% at ${xPct}% ${yPct}%)`,
           ],
         },
         {

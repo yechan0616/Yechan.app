@@ -22,8 +22,8 @@ const applyToDocument = (mode: Mode) => {
   document.documentElement.style.colorScheme = mode
 }
 
-// 전환 동안만 색상 트랜지션을 켜서 새 팔레트로 천천히 크로스페이드합니다
-const FADE_MS = 700
+// 전환 동안만 색상 트랜지션을 켜서 새 팔레트로 부드럽게 크로스페이드합니다
+const FADE_MS = 350
 let fadeTimer: number | undefined
 
 const applyWithFade = (mode: Mode) => {

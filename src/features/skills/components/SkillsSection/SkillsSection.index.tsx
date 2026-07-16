@@ -1,7 +1,12 @@
 'use client'
 
+import { CertificateIcon } from '@phosphor-icons/react'
 import { certifications, otherSkills } from 'features/skills/api'
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import {
+  AwardLightbox,
+  type AwardViewer,
+} from 'shared/components/AwardLightbox/AwardLightbox.index'
 import { SectionTitle } from 'shared/components/SectionTitle/SectionTitle.index'
 import type { Lang } from 'shared/i18n/strings'
 import { fadeUp, viewportOnce } from 'shared/styles/motion'
@@ -83,6 +88,7 @@ function useMarquee() {
 
 export function SkillsSection({ lang }: { lang: Lang }) {
   const trackRef = useMarquee()
+  const [viewer, setViewer] = useState<AwardViewer | null>(null)
 
   return (
     <S.Section
@@ -115,8 +121,28 @@ export function SkillsSection({ lang }: { lang: Lang }) {
       </S.Marquee>
       <S.Certifications>
         <S.CertLabel>{lang === 'en' ? 'Certifications' : '자격증'}</S.CertLabel>
-        {certifications.map((cert) => cert[lang]).join(' · ')}
+        {certifications.map((cert, index) => (
+          <Fragment key={cert.en}>
+            {index > 0 && ' · '}
+            {cert.award ? (
+              <S.CertButton
+                type='button'
+                onClick={() =>
+                  setViewer({ images: [cert.award as string], alt: cert[lang] })
+                }
+              >
+                {cert[lang]}
+                <S.CertIcon aria-hidden='true'>
+                  <CertificateIcon size='1em' />
+                </S.CertIcon>
+              </S.CertButton>
+            ) : (
+              cert[lang]
+            )}
+          </Fragment>
+        ))}
       </S.Certifications>
+      <AwardLightbox viewer={viewer} onClose={() => setViewer(null)} />
     </S.Section>
   )
 }

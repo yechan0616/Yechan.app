@@ -91,3 +91,30 @@ export const CertLabel = styled.span`
   color: ${({ theme }) => theme.colors.body};
   font-weight: 600;
 `
+
+export const CertButton = styled.button`
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+
+  &:active {
+    opacity: 0.4;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.55;
+    }
+  }
+`
+
+export const CertIcon = styled.span`
+  display: inline-block;
+  margin-left: 4px;
+  line-height: 0;
+  vertical-align: -1px;
+`

@@ -48,6 +48,8 @@ export default defineConfig({
                 project: s.string().optional(),
                 // 프로젝트가 아닌 자료(상장 등)로 연결할 외부/내부 링크
                 href: s.string().optional(),
+                // 상장/수료증 스캔 이미지 — 클릭 시 라이트박스로 열립니다
+                awards: s.array(s.string()).optional(),
               }),
             ),
           }),
@@ -60,7 +62,14 @@ export default defineConfig({
       single: true,
       schema: s.object({
         other: s.array(s.string()),
-        certifications: s.array(localized),
+        certifications: s.array(
+          s.object({
+            ko: s.string(),
+            en: s.string(),
+            // 실물 자격증 스캔 이미지 — 클릭 시 라이트박스로 열립니다
+            award: s.string().optional(),
+          }),
+        ),
       }),
     },
   },

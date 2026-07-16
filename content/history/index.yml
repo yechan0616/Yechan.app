@@ -19,6 +19,11 @@ items:
           ko: 개인 포트폴리오 Yechan.app 제작
           en: Built personal portfolio Yechan.app
         project: yechan-app
+      - label:
+          ko: 전기기능사 취득
+          en: Earned the Craftsman Electricity certification
+        awards:
+          - /assets/awards/electricity-certificate.jpg
   - year: 2025
     events:
       - label:
@@ -44,6 +49,14 @@ items:
         desc:
           ko: 방범용 CCTV로 도로 상태를 감지하는 E-Drive를 만들어, 새 장비 없이 도로 관리 생태계를 구축하는 아이디어를 제안했어요.
           en: Built E-Drive, turning existing security CCTV into a road-management ecosystem that detects road conditions without new hardware.
+      - label:
+          ko: 초경량비행장치조종자(무인멀티콥터 1종) 취득
+          en: Earned the Ultralight Vehicle Pilot license (Unmanned Multicopter, Class 1)
+        awards:
+          - /assets/awards/drone-certificate.jpg
+      - label:
+          ko: 지게차운전기능사 취득
+          en: Earned the Craftsman Forklift Truck Operator certification
   - year: 2024
     events:
       - label:
@@ -56,6 +69,33 @@ items:
           ko: 행사 캘린더와 유적지 QR 스탬프 챌린지를 담은 나주 여행 앱을 만들고 있어요.
           en: A travel app for Naju with an event calendar and a QR stamp challenge for historic sites.
         project: naju-travel
+  - year: 2022
+    events:
+      - label:
+          ko: 목포대학교 정보보호영재교육원 중등기초B 수료
+          en: Completed the Information Security Gifted Education Program at Mokpo National University
+        desc:
+          ko: 전 교육과정을 이수하고 우수상을 받았어요.
+          en: Finished the full Middle School Basic B course and received an excellence award.
+        awards:
+          - /assets/awards/infosec-completion.jpg
+          - /assets/awards/infosec-excellence.jpg
+      - label:
+          ko: 목포대학교 정보보호 해커톤 참가
+          en: Entered the Mokpo National University Information Security Hackathon
+        desc:
+          ko: 대학생과 외부 학생들이 함께 겨루는 대회에서 팀으로 3위에 입상했어요.
+          en: Placed 3rd with my team, competing against university and external students.
+  - year: 2020
+    events:
+      - label:
+          ko: 과학기술정보통신부장관 상장 수상
+          en: Received the Minister of Science and ICT Award
+        desc:
+          ko: 제53회 과학의 날, 과학적 탐구심과 창의성을 인정받았어요.
+          en: Recognized for scientific curiosity and creativity on the 53rd Science Day.
+        awards:
+          - /assets/awards/science-day-award.jpg
   - year: 2017
     events:
       - label:

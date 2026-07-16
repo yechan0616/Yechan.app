@@ -18,5 +18,10 @@ certifications:
     en: Craftsman Forklift Truck Operator
   - ko: 전기기능사
     en: Craftsman Electricity
+    award: /assets/awards/electricity-certificate.jpg
   - ko: 초경량비행장치조종자(무인멀티콥터 1종)
     en: Ultralight Vehicle Pilot (Unmanned Multicopter, Class 1)
+    award: /assets/awards/drone-certificate.jpg
+  - ko: DEQ 디지털윤리자격 3급
+    en: DEQ Digital Ethics Qualification, Level 3
+    award: /assets/awards/deq-certificate.jpg

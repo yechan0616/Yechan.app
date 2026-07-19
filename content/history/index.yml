@@ -16,6 +16,13 @@ items:
           en: Building NextAI, an AI-powered predictive maintenance platform, with team Next.
         project: nextai
       - label:
+          ko: 제6회 전남 학생 SW융합 해커톤 참가
+          en: Entered the 6th Jeonnam Student SW Convergence Hackathon
+        desc:
+          ko: 양도 불가 출입 인증 시스템 Toast ACS를 만들고 있어요.
+          en: Building Toast ACS, a non-transferable access control system.
+        project: toast-acs
+      - label:
           ko: 개인 포트폴리오 Yechan.app 제작
           en: Built personal portfolio Yechan.app
         project: yechan-app

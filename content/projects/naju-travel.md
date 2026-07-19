@@ -1,7 +1,7 @@
 ---
 title: Naju Travel
 year: 2024
-order: 6
+order: 7
 techStack: [Next.js, React, React Native, Emotion, Prisma, PostgreSQL]
 repositoryUrl: https://github.com/The-Toast-Dev/naju_client
 image: /assets/projects/naju-travel.jpg

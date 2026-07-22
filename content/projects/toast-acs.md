@@ -6,6 +6,7 @@ year: 2026
 order: 5
 techStack: [Next.js, React, Emotion, Framer Motion, Spring Boot, PostgreSQL, ESP32]
 repositoryUrl: https://github.com/yechan0616/Toast-ACS
+image: /assets/projects/toast-acs.png
 meta:
   ko: The Toast · 프론트엔드·백엔드 개발
   en: The Toast · Frontend & backend development

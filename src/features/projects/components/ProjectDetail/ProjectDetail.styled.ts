@@ -145,6 +145,44 @@ export const Paragraphs = styled.div`
   }
 `
 
+export const SectionTitle = styled.h2`
+  margin: 24px 0 0;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+`
+
+export const List = styled.ul`
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    color: ${({ theme }) => theme.colors.body};
+    font-size: 14px;
+    line-height: 1.75;
+
+    &::marker {
+      color: ${({ theme }) => theme.colors.faint};
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    li {
+      font-size: 13px;
+    }
+  }
+`
+
 export const RepoRow = styled.div`
   margin-top: 28px;
 `

@@ -1,5 +1,10 @@
 import type { Localized } from 'shared/i18n/strings'
 
+export type Block =
+  | { type: 'heading'; text: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'paragraph'; text: string }
+
 export interface Project {
   id: string
   title: Localized
@@ -9,5 +14,5 @@ export interface Project {
   image?: string
   meta: Localized
   summary: Localized
-  paragraphs: Localized<string[]>
+  blocks: Localized<Block[]>
 }

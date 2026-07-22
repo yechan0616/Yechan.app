@@ -54,9 +54,23 @@ export function ProjectDetail({
         </S.Slot>
 
         <S.Paragraphs>
-          {project.paragraphs[lang].map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          {project.blocks[lang].map((block) => {
+            if (block.type === 'heading') {
+              return (
+                <S.SectionTitle key={block.text}>{block.text}</S.SectionTitle>
+              )
+            }
+            if (block.type === 'list') {
+              return (
+                <S.List key={block.items[0]}>
+                  {block.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </S.List>
+              )
+            }
+            return <p key={block.text}>{block.text}</p>
+          })}
         </S.Paragraphs>
 
         {project.repositoryUrl && (
